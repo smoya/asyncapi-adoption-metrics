@@ -54,7 +54,7 @@ describe('Recorder', function() {
   it('recordActionExecution()', async function() {
     const recorderMetricsSpy = [];
     const recorder = new Recorder('test', new testSink(), recorderMetricsSpy);
-    const expectedMetric = new Metric('test.action.executed.validate', MetricType.Counter, 1, { success: true });
+    const expectedMetric = new Metric('test.action.executed', MetricType.Counter, 1, { action: 'validate', success: true });
     
     recorder.recordActionExecution('validate', { success: true });
     expect(recorderMetricsSpy).toHaveLength(1);
@@ -65,7 +65,7 @@ describe('Recorder', function() {
     const sink = new testSink();
     const recorderMetricsSpy = [];
     const {recorder, stop} = WithPeriodicFlushRecorder(new Recorder('test', sink, recorderMetricsSpy), 100);
-    const expectedMetric = new Metric('test.action.executed.validate', MetricType.Counter, 1, { success: true });
+    const expectedMetric = new Metric('test.action.executed', MetricType.Counter, 1, { action: 'validate', success: true });
     
     recorder.recordActionExecution('validate', { success: true });
     expect(recorderMetricsSpy).toHaveLength(1);
