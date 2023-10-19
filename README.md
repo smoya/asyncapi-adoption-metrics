@@ -1,2 +1,2 @@
-# syncapi-adoption-metrics
-Metrics for measuring AsyncAPI asoption
+# asyncapi-adoption-metrics
+Metrics for measuring AsyncAPI adoption
