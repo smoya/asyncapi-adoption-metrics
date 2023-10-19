@@ -15,14 +15,22 @@ export class Recorder {
   gauge(name: string, value: number, metadata: MetricMetadata = {}) {
     this.record(new Metric(name, MetricType.Gauge, value, metadata));
   }
+  
+  recordValidateActionExecution(metadata: MetricMetadata = {}) {
+    this.recordActionExecution('validate', metadata);
+  }
+
+  recordGenerateActionExecution(metadata: MetricMetadata = {}) {
+    this.recordActionExecution('generate', metadata);
+  }
 
   recordActionExecution(actionName: string, metadata: MetricMetadata = {}) {
-    actionName = `action.executed.${  actionName}`;
-    this.record(new Metric(actionName, MetricType.Counter, 1, metadata));
+    metadata['action'] = actionName;
+    this.record(new Metric('action.executed', MetricType.Counter, 1, metadata));
   }
 
   record(metric: Metric) {
-    metric.name = this.prefix.endsWith('.') ? this.prefix + metric.name : `${this.prefix  }.${  metric.name}`;
+    metric.name = this.prefix.endsWith('.') ? this.prefix + metric.name : `${ this.prefix }.${ metric.name }`;
     this.metrics.push(metric);
   }
 
