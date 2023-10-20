@@ -1,4 +1,3 @@
-import exp from 'constants';
 import { MetadataFromDocument } from '../src/metrics';
 import { NewParser, AsyncAPIDocument } from '@smoya/multi-parser';
 

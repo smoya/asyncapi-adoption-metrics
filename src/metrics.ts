@@ -1,4 +1,4 @@
-import { AsyncAPIDocumentInterface } from '@asyncapi/parser';
+import { AsyncAPIDocument } from '@smoya/multi-parser';
 
 export enum MetricType {
   Counter = 'counter',
@@ -7,7 +7,7 @@ export enum MetricType {
 
 export type MetricMetadata = { [key: string]: any };
 
-export function MetadataFromDocument(doc: AsyncAPIDocumentInterface, metadata: MetricMetadata = []): MetricMetadata {
+export function MetadataFromDocument(doc: AsyncAPIDocument, metadata: MetricMetadata = []): MetricMetadata {
   metadata['_asyncapi_version'] = doc.version();
   metadata['_asyncapi_servers'] = doc.allServers().all().length;
   metadata['_asyncapi_channels'] = doc.allChannels().all().length;
