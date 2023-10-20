@@ -71,10 +71,10 @@ describe('Recorder', function() {
     expect(recorderMetricsSpy).toHaveLength(1);
     expect(recorderMetricsSpy[0]).toEqual(expectedMetric);
 
-    await new Promise(f => setTimeout(f, 500));
+    await new Promise(f => setTimeout(f, 700));
     stop();
 
-    expect(sink.calledTimes).toBeGreaterThan(3); // Aprox 5 calls
-    expect(sink.calledTimes).toBeLessThan(7); // Aprox 5 calls
+    expect(sink.calledTimes).toBeGreaterThan(3); // Theory: 7 calls. Real: aprox 5 or 6 calls
+    expect(sink.calledTimes).toBeLessThan(8); 
   });
 });
