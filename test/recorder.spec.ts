@@ -62,6 +62,7 @@ describe('Recorder', function() {
   });
 
   it('WithPeriodicFlushRecorder()', async function() {
+    jest.useFakeTimers(); // this mocks setTimeout global function
     const sink = new testSink();
     const recorderMetricsSpy = [];
     const {recorder, stop} = WithPeriodicFlushRecorder(new Recorder('test', sink, recorderMetricsSpy), 100);
@@ -71,10 +72,9 @@ describe('Recorder', function() {
     expect(recorderMetricsSpy).toHaveLength(1);
     expect(recorderMetricsSpy[0]).toEqual(expectedMetric);
 
-    await new Promise(f => setTimeout(f, 700));
+    jest.advanceTimersByTime(200);
     stop();
 
-    expect(sink.calledTimes).toBeGreaterThan(3); // Theory: 7 calls. Real: aprox 5 or 6 calls
-    expect(sink.calledTimes).toBeLessThan(8); 
+    expect(sink.calledTimes).toEqual(3);
   });
 });
