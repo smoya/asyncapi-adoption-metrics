@@ -8,28 +8,28 @@ export class Recorder {
     protected metrics: Metric[] = []
   ) {}
 
-  count(name: string, value = 1, metadata: MetricMetadata = {}) {
+  async count(name: string, value = 1, metadata: MetricMetadata = {}) {
     this.record(new Metric(name, MetricType.Counter, value, metadata));
   }
 
-  gauge(name: string, value: number, metadata: MetricMetadata = {}) {
+  async gauge(name: string, value: number, metadata: MetricMetadata = {}) {
     this.record(new Metric(name, MetricType.Gauge, value, metadata));
   }
   
-  recordValidateActionExecution(metadata: MetricMetadata = {}) {
+  async recordValidateActionExecution(metadata: MetricMetadata = {}) {
     this.recordActionExecution('validate', metadata);
   }
 
-  recordGenerateActionExecution(metadata: MetricMetadata = {}) {
+  async recordGenerateActionExecution(metadata: MetricMetadata = {}) {
     this.recordActionExecution('generate', metadata);
   }
 
-  recordActionExecution(actionName: string, metadata: MetricMetadata = {}) {
+  async recordActionExecution(actionName: string, metadata: MetricMetadata = {}) {
     metadata['action'] = actionName;
     this.record(new Metric('action.executed', MetricType.Counter, 1, metadata));
   }
 
-  record(metric: Metric) {
+  async record(metric: Metric) {
     metric.name = this.prefix.endsWith('.') ? this.prefix + metric.name : `${ this.prefix }.${ metric.name }`;
     this.metrics.push(metric);
   }
