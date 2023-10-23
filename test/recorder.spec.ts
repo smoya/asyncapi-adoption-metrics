@@ -20,7 +20,7 @@ describe('Recorder', function() {
     const recorder = new Recorder('test', sink, recorderMetricsSpy);
     const metric = new Metric('test_metric', MetricType.Counter, 1, { foo: 'bar' });
 
-    recorder.record(metric);
+    await recorder.record(metric);
     expect(recorderMetricsSpy).toHaveLength(1);
     expect(recorderMetricsSpy[0]).toBe(metric);
     expect(sink.metrics).toHaveLength(0);
@@ -36,7 +36,7 @@ describe('Recorder', function() {
     const recorder = new Recorder('test', new testSink(), recorderMetricsSpy);
     const expectedMetric = new Metric('test.test_metric', MetricType.Counter, 1, { foo: 'bar' });
         
-    recorder.count('test_metric', 1, { foo: 'bar' });
+    await recorder.count('test_metric', 1, { foo: 'bar' });
     expect(recorderMetricsSpy).toHaveLength(1);
     expect(recorderMetricsSpy[0]).toEqual(expectedMetric);
   });
@@ -46,7 +46,7 @@ describe('Recorder', function() {
     const recorder = new Recorder('test', new testSink(), recorderMetricsSpy);
     const expectedMetric = new Metric('test.test_metric', MetricType.Gauge, 937.5551819, { foo: 'bar' });
         
-    recorder.gauge('test_metric', 937.5551819, { foo: 'bar' });
+    await recorder.gauge('test_metric', 937.5551819, { foo: 'bar' });
     expect(recorderMetricsSpy).toHaveLength(1);
     expect(recorderMetricsSpy[0]).toEqual(expectedMetric);
   });
@@ -56,7 +56,7 @@ describe('Recorder', function() {
     const recorder = new Recorder('test', new testSink(), recorderMetricsSpy);
     const expectedMetric = new Metric('test.action.executed', MetricType.Counter, 1, { action: 'validate', success: true });
     
-    recorder.recordActionExecution('validate', { success: true });
+    await recorder.recordActionExecution('validate', { success: true });
     expect(recorderMetricsSpy).toHaveLength(1);
     expect(recorderMetricsSpy[0]).toEqual(expectedMetric);
   });
@@ -67,7 +67,7 @@ describe('Recorder', function() {
     const {recorder, stop} = WithPeriodicFlushRecorder(new Recorder('test', sink, recorderMetricsSpy), 100);
     const expectedMetric = new Metric('test.action.executed', MetricType.Counter, 1, { action: 'validate', success: true });
     
-    recorder.recordActionExecution('validate', { success: true });
+    await recorder.recordActionExecution('validate', { success: true });
     expect(recorderMetricsSpy).toHaveLength(1);
     expect(recorderMetricsSpy[0]).toEqual(expectedMetric);
 
