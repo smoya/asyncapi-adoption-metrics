@@ -24,6 +24,18 @@ export class Recorder {
     this.recordActionExecution('generate', metadata);
   }
 
+  async recordConvertActionExecution(metadata: MetricMetadata = {}) {
+    this.recordActionExecution('convert', metadata);
+  }
+
+  async recordOptimizeActionExecution(metadata: MetricMetadata = {}) {
+    this.recordActionExecution('optimize', metadata);
+  }
+  
+  async recordBundleActionExecution(metadata: MetricMetadata = {}) {
+    this.recordActionExecution('bundle', metadata);
+  }
+
   async recordActionExecution(actionName: string, metadata: MetricMetadata = {}) {
     metadata['action'] = actionName;
     this.record(new Metric('action.executed', MetricType.Counter, 1, metadata));
