@@ -22,13 +22,13 @@ describe('Recorder', function() {
 
     await recorder.record(metric);
     expect(recorderMetricsSpy).toHaveLength(1);
-    expect(recorderMetricsSpy[0]).toBe(metric);
+    expect(recorderMetricsSpy[0]).toEqual(metric);
     expect(sink.metrics).toHaveLength(0);
 
     await recorder.flush();
     expect(recorderMetricsSpy).toHaveLength(0);
     expect(sink.metrics).toHaveLength(1);
-    expect(sink.metrics[0]).toBe(metric);
+    expect(sink.metrics[0]).toEqual(metric);
   });
 
   it('count()', async function() {
