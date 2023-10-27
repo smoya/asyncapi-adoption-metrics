@@ -16,26 +16,6 @@ export class Recorder {
     this.record(new Metric(name, MetricType.Gauge, value, metadata));
   }
   
-  async recordValidateActionExecution(metadata: MetricMetadata = {}) {
-    this.recordActionExecution('validate', metadata);
-  }
-
-  async recordGenerateActionExecution(metadata: MetricMetadata = {}) {
-    this.recordActionExecution('generate', metadata);
-  }
-
-  async recordConvertActionExecution(metadata: MetricMetadata = {}) {
-    this.recordActionExecution('convert', metadata);
-  }
-
-  async recordOptimizeActionExecution(metadata: MetricMetadata = {}) {
-    this.recordActionExecution('optimize', metadata);
-  }
-  
-  async recordBundleActionExecution(metadata: MetricMetadata = {}) {
-    this.recordActionExecution('bundle', metadata);
-  }
-
   async recordActionExecution(actionName: string, metadata: MetricMetadata = {}) {
     metadata['action'] = actionName;
     this.record(new Metric('action.executed', MetricType.Counter, 1, metadata));
