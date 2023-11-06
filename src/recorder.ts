@@ -16,14 +16,6 @@ export class Recorder {
     this.record(new Metric(name, MetricType.Gauge, value, metadata));
   }
   
-  async recordValidateActionExecution(metadata: MetricMetadata = {}) {
-    this.recordActionExecution('validate', metadata);
-  }
-
-  async recordGenerateActionExecution(metadata: MetricMetadata = {}) {
-    this.recordActionExecution('generate', metadata);
-  }
-
   async recordActionExecution(actionName: string, metadata: MetricMetadata = {}) {
     metadata['action'] = actionName;
     this.record(new Metric('action.executed', MetricType.Counter, 1, metadata));
