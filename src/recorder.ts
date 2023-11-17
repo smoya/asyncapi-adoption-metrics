@@ -16,11 +16,11 @@ export class Recorder {
     this.record(new Metric(name, MetricType.Gauge, value, metadata));
   }
   
-  async recordActionExecution(actionName: string, metadata: MetricMetadata = {}) {
+  async recordActionExecuted(actionName: string, metadata: MetricMetadata = {}) {
     metadata['action'] = actionName;
     this.record(new Metric('action.executed', MetricType.Counter, 1, metadata));
   }
-  async recordActionInvoke(actionName: string, metadata: MetricMetadata = {}) {
+  async recordActionInvoked(actionName: string, metadata: MetricMetadata = {}) {
     metadata['action'] = actionName;
     this.record(new Metric('action.invoked', MetricType.Counter, 1, metadata));
   }
