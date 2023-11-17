@@ -20,6 +20,10 @@ export class Recorder {
     metadata['action'] = actionName;
     this.record(new Metric('action.executed', MetricType.Counter, 1, metadata));
   }
+  async recordActionInvoke(actionName: string, metadata: MetricMetadata = {}) {
+    metadata['action'] = actionName;
+    this.record(new Metric('action.invoked', MetricType.Counter, 1, metadata));
+  }
 
   async record(metric: Metric) {
     metric.name = this.prefix.endsWith('.') ? this.prefix + metric.name : `${ this.prefix }.${ metric.name }`;

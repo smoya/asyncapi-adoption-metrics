@@ -60,6 +60,16 @@ describe('Recorder', function() {
     expect(recorderMetricsSpy).toHaveLength(1);
     expect(recorderMetricsSpy[0]).toEqual(expectedMetric);
   });
+  
+  it('recordActionInvoke()', async function() {
+    const recorderMetricsSpy = [];
+    const recorder = new Recorder('test', new testSink(), recorderMetricsSpy);
+    const expectedMetric = new Metric('test.action.invoked', MetricType.Counter, 1, { action: 'convert', success: true });
+    
+    await recorder.recordActionInvoke('convert', { success: true });
+    expect(recorderMetricsSpy).toHaveLength(1);
+    expect(recorderMetricsSpy[0]).toEqual(expectedMetric);
+  });
 
   it('WithPeriodicFlushRecorder()', async function() {
     jest.useFakeTimers(); // this mocks setTimeout global function
