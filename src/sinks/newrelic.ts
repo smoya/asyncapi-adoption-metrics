@@ -1,3 +1,4 @@
+/* global RequestInit */
 import { Sink } from '../sink';
 import { Metrics, MetricType } from '../metrics';
 
@@ -28,7 +29,7 @@ export class NewRelicSink implements Sink {
     protected readonly apiEndpoint = 'https://metric-api.eu.newrelic.com/metric/v1'
   ) {}
   
-  async send(metrics: Metrics): Promise<void> {
+  async send(metrics: Metrics, timeout = 2000): Promise<void> {
     const nrMetrics = [];
     for (const metric of metrics) {
       switch (metric.type) {
@@ -44,18 +45,28 @@ export class NewRelicSink implements Sink {
     }
   
     // Send the metric to the New Relic Metrics API
-    const response = await fetch(this.apiEndpoint, {
+    const response = await fetchWithTimeout(this.apiEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-License-Key': this.licenseKey
       },
       body: JSON.stringify([{ metrics: nrMetrics }])
-    });
+    }, timeout);
   
     // Check the response status and throw an error if it's not successful
     if (!response.ok) {
       throw new Error(`Failed to send metrics to New Relic Metrics API: ${response.status} ${response.statusText}`);
     }
   }
+}
+
+async function fetchWithTimeout(resource: string, options: RequestInit, timeout: number): Promise<Response> {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  options.signal = controller.signal;
+  const response = await fetch(resource, options);
+  clearTimeout(id);
+
+  return response;
 }
