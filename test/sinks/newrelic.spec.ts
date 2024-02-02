@@ -27,7 +27,8 @@ describe('Recorder', function() {
         'Content-Type': 'application/json', 
         'X-License-Key': 'FAKE_LICENSE_KEY'
       },
-      method: 'POST'
+      method: 'POST',
+      signal: new AbortController().signal
     };
 
     await sink.send(metrics);
