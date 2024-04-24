@@ -35,7 +35,7 @@
     "prepublishOnly": "npm run generate:assets"
   },
   "dependencies": {
-    "@smoya/multi-parser": "^5.0.6"
+    "@smoya/multi-parser": "^5.0.7"
   },
   "devDependencies": {
     "@jest/types": "^29.0.2",
