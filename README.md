@@ -39,3 +39,14 @@ asyncapi_adoption.action.finished       COUNTER {
 ## Data storage
 We are making use of [New Relic API](https://docs.newrelic.com/docs/apis/intro-apis/introduction-new-relic-apis/#rest-api) to send the metrics collected to the _New Relic_ servers, where they are stored, and finally visualized on our own dashboards at the AsyncAPI website (WIP).
 
+## Data privacy
+All the data is anonymized, ensuring no sensitive data reaches our servers.
+
+Even though metrics collection is enabled by default, you can always disable tracking if you wish. To disable tracking, please run the following command:
+`asyncapi config analytics --disable`
+
+Once disabled, if you want to enable tracking back again then run:
+`asyncapi config analytics --enable`
+
+
+
