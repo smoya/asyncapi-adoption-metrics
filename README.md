@@ -3,7 +3,19 @@ Metrics library for measuring AsyncAPI tooling adoption.
 
 It aids in comprehending how AsyncAPI tools are used and adopted, facilitating ongoing improvements to our specifications and tools. Currently is being used by @asyncapi/cli as a POC and next step will be making use of it on @asyncapi/studio as well.
 
+## Installation
 Requires NodeJS v18 or greater.
+```
+npm install @smoya/@asyncapi-adoption-metrics
+yarn add @smoya/@asyncapi-adoption-metrics
+```
+
+## Usage
+
+
+
+
+
 
 ## Metrics collected
 We are collecting the following metrics:
@@ -47,6 +59,8 @@ Even though metrics collection is enabled by default, you can always disable tra
 
 Once disabled, if you want to enable tracking back again then run:
 `asyncapi config analytics --enable`
+
+## Contributing
 
 
 
