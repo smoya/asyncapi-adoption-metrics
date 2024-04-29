@@ -9,13 +9,13 @@ Requires NodeJS v18 or greater.
 We are collecting the following metrics:
 
 - `asyncapi_adoption.action.invoked`:
-With this metric we are tracking the command executed on the CLI as soon as the command is invoked, so it hasn't been completely executed and not finished yet. We just want to know which commands are used, regardless they have failed or succeeded.
+With this metric we are tracking any action started (but not finished) in a tool. For example, a command that got executed on the [CLI](https://github.com/asyncapi/cli/) but didn't finish yet. We just want to know which commands are used, regardless they have failed or succeeded.
 
 - `asyncapi_adoption.action.finished`:
-This metric tracks the command executed once it has already finished, carrying the result of the execution and some metadata based on the AsyncAPI document in place.
+With this metric we are tracking the action executed once it has already finished, carrying the result of the execution and some metadata.
 
 ## Examples
-Example for `validate` command after being invoked:
+Example for [CLI](https://github.com/asyncapi/cli/) `validate` command after being invoked:
 ```
 asyncapi_adoption.action.invoked        COUNTER { action: 'validate' }  1
 ```
@@ -37,5 +37,5 @@ asyncapi_adoption.action.finished       COUNTER {
 ```
 
 ## Data storage
-We are making use of [New Relic API](https://docs.newrelic.com/docs/apis/intro-apis/introduction-new-relic-apis/#rest-api) to send the metrics collected to the _New Relic_ servers, where they are stored, and finally visualized on our own dashboards at the AsyncAPI website.
+We are making use of [New Relic API](https://docs.newrelic.com/docs/apis/intro-apis/introduction-new-relic-apis/#rest-api) to send the metrics collected to the _New Relic_ servers, where they are stored, and finally visualized on our own dashboards at the AsyncAPI website (WIP).
 
