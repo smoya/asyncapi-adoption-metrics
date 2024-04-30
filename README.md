@@ -31,14 +31,14 @@ Contains all the functions needed to record the different metrics we collect, li
     this.record(new Metric('action.invoked', MetricType.Counter, 1, metadata));
   }
     ```
-  Example where this function is used:
-    ```ts
-      async init(): Promise<void> {
-      await super.init();
-      const commandName : string = this.id || '';
-      await this.recordActionInvoked(commandName, this.metricsMetadata);
-    }
-    ```
+Example where this function is used:
+  ```ts
+    async init(): Promise<void> {
+    await super.init();
+    const commandName : string = this.id || '';
+    await this.recordActionInvoked(commandName, this.metricsMetadata);
+  }
+  ```
 
   - `asyncapi_adoption.action.finished`:
   With this metric we are tracking the action executed once it has already finished, carrying the result of the execution and some metadata.
@@ -48,14 +48,14 @@ Contains all the functions needed to record the different metrics we collect, li
     this.record(new Metric('action.finished', MetricType.Counter, 1, metadata));
   }
     ```
-  Example where this function is used:
-    ```ts
-      async finally(error: Error | undefined): Promise<any> {
-      await super.finally(error);
-      this.metricsMetadata['success'] = error === undefined;
-      await this.recordActionFinished(this.id as string, this.metricsMetadata, this.specFile?.text());
-    }
-    ```
+Example where this function is used:
+  ```ts
+    async finally(error: Error | undefined): Promise<any> {
+    await super.finally(error);
+    this.metricsMetadata['success'] = error === undefined;
+    await this.recordActionFinished(this.id as string, this.metricsMetadata, this.specFile?.text());
+  }
+  ```
 
 Utils exposed by the library to operate mainly with the `Sink` interface and the metadata retrieved from the asyncapi files:
 ```ts
