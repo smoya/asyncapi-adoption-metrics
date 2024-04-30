@@ -32,6 +32,7 @@ Contains all the functions needed to record the different metrics we collect, li
   }
     ```
   Example where this function is used:
+
     ```ts
     async init(): Promise<void> {
     await super.init();
@@ -49,6 +50,7 @@ Contains all the functions needed to record the different metrics we collect, li
   }
     ```
   Example where this function is used:
+
     ```ts
     async finally(error: Error | undefined): Promise<any> {
     await super.finally(error);
@@ -106,6 +108,8 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
     <tr>
       <td align="center" valign="top" width="25%"><a href="https://github.com/smoya"><img src="https://avatars.githubusercontent.com/u/1083296?v=4?s=100" width="100px;" alt="Sergio Moya"/><br /><sub><b>Sergio Moya</b></sub></a><br /><a href="#question-smoya" title="Answering Questions">💬</a> <a href="https://github.com/smoya/asyncapi-adoption-metrics/issues?q=author%3Asmoya" title="Bug reports">🐛</a> <a href="https://github.com/smoya/asyncapi-adoption-metrics/commits?author=smoya" title="Code">💻</a> <a href="#ideas-smoya" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/smoya/asyncapi-adoption-metrics/pulls?q=is%3Apr+reviewed-by%3Asmoya" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/smoya/asyncapi-adoption-metrics/commits?author=fmvilas" title="Tests">⚠️</a></td>
       <td align="center" valign="top" width="25%"><a href="https://github.com/peter-rr"><img src="https://avatars.githubusercontent.com/u/81691177?v=4?s=100" width="100px;" alt="Pedro Ramos"/><br /><sub><b>Pedro Ramos</b></sub></a><br /><a href="#question-peter-rr" title="Answering Questions">💬</a> <a href="https://github.com/smoya/asyncapi-adoption-metrics/commits?author=peter-rr" title="Code">💻</a> <a href="https://github.com/smoya/asyncapi-adoption-metrics/commits?author=peter-rr" title="Documentation">📖</a> <a href="#ideas-peter-rr" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-peter-rr" title="Maintenance">🚧</a> <a href="https://github.com/smoya/asyncapi-adoption-metrics/pulls?q=is%3Apr+reviewed-by%3Apeter-rr" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/Amzani"><img src="https://avatars.githubusercontent.com/u/554438?v=4?s=100" width="100px;" alt="Amzani"/><br /><sub><b>Amzani</b></sub></a><br /> <a href="#ideas-samz" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/smoya/asyncapi-adoption-metrics/issues?q=author%3Asamz" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/KhudaDad414"><img src="https://avatars.githubusercontent.com/u/32505158?v=4?s=100" width="100px;" alt="Khuda Dad Nomani"/><br /><sub><b>Khuda Dad Nomani</b></sub></a><br /> <a href="https://github.com/smoya/asyncapi-adoption-metrics/issues?q=author%3AKhudaDad414" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
