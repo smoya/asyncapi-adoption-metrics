@@ -31,7 +31,7 @@ Contains all the functions needed to record the different metrics we collect, li
     this.record(new Metric('action.invoked', MetricType.Counter, 1, metadata));
   }
     ```
-    Example where this function is used:
+  Example where this function is used:
     ```ts
     async init(): Promise<void> {
     await super.init();
@@ -48,7 +48,7 @@ Contains all the functions needed to record the different metrics we collect, li
     this.record(new Metric('action.finished', MetricType.Counter, 1, metadata));
   }
     ```
-    Example where this function is used:
+  Example where this function is used:
     ```ts
     async finally(error: Error | undefined): Promise<any> {
     await super.finally(error);
