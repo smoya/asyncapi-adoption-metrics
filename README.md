@@ -32,13 +32,12 @@ Contains all the functions needed to record the different metrics we collect, li
   }
     ```
   Example where this function is used:
-
     ```ts
-    async init(): Promise<void> {
-    await super.init();
-    const commandName : string = this.id || '';
-    await this.recordActionInvoked(commandName, this.metricsMetadata);
-  }
+      async init(): Promise<void> {
+      await super.init();
+      const commandName : string = this.id || '';
+      await this.recordActionInvoked(commandName, this.metricsMetadata);
+    }
     ```
 
   - `asyncapi_adoption.action.finished`:
@@ -50,13 +49,12 @@ Contains all the functions needed to record the different metrics we collect, li
   }
     ```
   Example where this function is used:
-
     ```ts
-    async finally(error: Error | undefined): Promise<any> {
-    await super.finally(error);
-    this.metricsMetadata['success'] = error === undefined;
-    await this.recordActionFinished(this.id as string, this.metricsMetadata, this.specFile?.text());
-  }
+      async finally(error: Error | undefined): Promise<any> {
+      await super.finally(error);
+      this.metricsMetadata['success'] = error === undefined;
+      await this.recordActionFinished(this.id as string, this.metricsMetadata, this.specFile?.text());
+    }
     ```
 
 Utils exposed by the library to operate mainly with the `Sink` interface and the metadata retrieved from the asyncapi files:
