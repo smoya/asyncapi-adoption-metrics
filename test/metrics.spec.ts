@@ -1,5 +1,5 @@
 import { MetadataFromDocument } from '../src/metrics';
-import { NewParser, AsyncAPIDocument } from '@smoya/multi-parser';
+import { NewParser, AsyncAPIDocument } from '@asyncapi/multi-parser';
 
 describe('Metrics', function() {
   const parser = NewParser();

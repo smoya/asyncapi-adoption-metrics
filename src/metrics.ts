@@ -1,4 +1,4 @@
-import { AsyncAPIDocument } from '@smoya/multi-parser';
+import { AsyncAPIDocument } from '@asyncapi/multi-parser';
 
 export enum MetricType {
   Counter = 'counter',
